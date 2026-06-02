@@ -125,6 +125,10 @@
     requestAnimationFrame(frame);
   }
 
+  // Keep the impact band hidden until we've helped more than this many students,
+  // so it doesn't show off tiny early numbers.
+  var MIN_STUDENTS_TO_SHOW = 30;
+
   function initImpact() {
     var wrap = document.querySelector("[data-impact-endpoint]");
     if (!wrap) return;
@@ -145,7 +149,11 @@
     fetch(endpoint)
       .then(function (r) { if (!r.ok) throw new Error("impact " + r.status); return r.json(); })
       .then(function (data) {
-        section.hidden = false; // reveal only once we have real numbers
+        // Stay hidden until we've helped more than MIN_STUDENTS_TO_SHOW students.
+        if (typeof data.students_helped !== "number" || data.students_helped <= MIN_STUDENTS_TO_SHOW) {
+          return;
+        }
+        section.hidden = false; // reveal once we have real, meaningful numbers
         var animate = function () {
           specs.forEach(function (s) {
             var el = wrap.querySelector('[data-stat="' + s.key + '"]');

@@ -132,7 +132,8 @@
   function initImpact() {
     var wrap = document.querySelector("[data-impact-endpoint]");
     if (!wrap) return;
-    var section = wrap.closest("section") || wrap;
+    // Only the stats block hides/reveals — the "AI on us" copy above stays visible.
+    var section = wrap.closest(".impact-stats") || wrap.closest("section") || wrap;
     var specs = [
       { key: "hours_donated",   fmt: withCommas, suffix: "+" },
       { key: "tokens_donated",  fmt: compact,    suffix: ""  },

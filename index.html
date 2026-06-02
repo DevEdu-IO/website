@@ -44,7 +44,7 @@
   </section>
 
   <!-- ===== Impact ===== -->
-  <section class="section impact-band" id="impact" hidden>
+  <section class="section impact-band" id="impact">
     <div class="container">
       <div class="section__head center">
         <span class="eyebrow">Free to get started</span>
@@ -70,21 +70,23 @@
         </div>
       </div>
 
-      <span class="eyebrow impact-stats__eyebrow">The impact so far</span>
-      <div class="stats"
-           data-impact-endpoint="https://app.devedu.io/api/v1/impact"
-           data-impact-endpoint-local="http://127.0.0.1:3001/api/v1/impact">
-        <div class="stat">
-          <div class="stat__num" data-stat="hours_donated">—</div>
-          <div class="stat__label">Hours of AI help given</div>
-        </div>
-        <div class="stat">
-          <div class="stat__num" data-stat="tokens_donated">—</div>
-          <div class="stat__label">AI tokens donated</div>
-        </div>
-        <div class="stat">
-          <div class="stat__num" data-stat="students_helped">—</div>
-          <div class="stat__label">Students supported</div>
+      <div class="impact-stats" hidden>
+        <span class="eyebrow impact-stats__eyebrow">The impact so far</span>
+        <div class="stats"
+             data-impact-endpoint="https://app.devedu.io/api/v1/impact"
+             data-impact-endpoint-local="http://127.0.0.1:3001/api/v1/impact">
+          <div class="stat">
+            <div class="stat__num" data-stat="hours_donated">—</div>
+            <div class="stat__label">Hours of AI help given</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num" data-stat="tokens_donated">—</div>
+            <div class="stat__label">AI tokens donated</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num" data-stat="students_helped">—</div>
+            <div class="stat__label">Students supported</div>
+          </div>
         </div>
       </div>
     </div>

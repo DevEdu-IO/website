@@ -129,10 +129,10 @@ p { margin: 0 0 1rem; }
   transform: rotate(1.2deg);
 }
 /* thin terminal-accent strip across the very top */
-.window::before { content: ""; display: block; height: 2px; background: linear-gradient(90deg, #3ddc84, #56b6c2, #61afef, #c678dd); }
+.window::before { content: ""; display: block; height: 2px; background: linear-gradient(90deg, #6db3ff, #b14bf4, #f706b0); }
 .window__bar { display: flex; align-items: center; gap: .55rem; padding: .55rem .8rem; background: #0c0e15; border-bottom: 1px solid rgba(255,255,255,.06); font-family: var(--mono); }
-.window__tab { display: inline-flex; align-items: center; gap: .45rem; font-size: .78rem; color: #e6e9f2; background: rgba(255,255,255,.05); padding: .28rem .65rem; border-radius: 7px 7px 0 0; border-bottom: 2px solid #3ddc84; }
-.window__tab i { color: #f7c948; }
+.window__tab { display: inline-flex; align-items: center; gap: .45rem; font-size: .78rem; color: #e6e9f2; background: rgba(255,255,255,.05); padding: .28rem .65rem; border-radius: 7px 7px 0 0; border-bottom: 2px solid #f706b0; }
+.window__tab i { color: #6db3ff; }
 .window__host { margin-left: auto; font-size: .73rem; color: #6b7186; letter-spacing: .01em; }
 .window__ctrls { display: inline-flex; gap: .4rem; }
 .window__ctrls b {
@@ -144,13 +144,13 @@ p { margin: 0 0 1rem; }
 .window__ctrls .cls::before { content: "\2715"; }   /* ✕ */
 .window__ctrls .cls { background: rgba(255,107,107,.16); color: #ff8585; }
 .window__code { margin: 0; padding: 1.1rem 1.3rem; font-family: var(--mono); font-size: .92rem; line-height: 1.75; overflow-x: auto; }
-.window__code .c-key { color: #c678dd; } .window__code .c-str { color: #98c379; } .window__code .c-fn { color: #61afef; } .window__code .c-num { color: #e5c07b; }
+.window__code .c-key { color: #b96bff; } .window__code .c-str { color: #ff5cc2; } .window__code .c-fn { color: #6db3ff; } .window__code .c-num { color: #b96bff; }
 .window__term { padding: .85rem 1.3rem 1.05rem; font-family: var(--mono); font-size: .84rem; background: #0c0e15; border-top: 1px solid rgba(255,255,255,.06); }
 .window__cmd { color: #d7dcec; }
-.window__cmd .u { color: #3ddc84; } .window__cmd .p { color: #61afef; }
+.window__cmd .u { color: #6db3ff; } .window__cmd .p { color: #b96bff; }
 .window__out { margin-top: .3rem; color: #8b91a7; }
-.window__out .ok { color: #3ddc84; }
-.cursor { display: inline-block; width: 8px; height: 1.05em; background: #3ddc84; margin-left: .35rem; vertical-align: text-bottom; animation: blink 1.1s steps(1) infinite; }
+.window__out .ok { color: #ff5cc2; }
+.cursor { display: inline-block; width: 8px; height: 1.05em; background: #f706b0; margin-left: .35rem; vertical-align: text-bottom; animation: blink 1.1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 
 /* ===== Sections ===== */
@@ -235,15 +235,10 @@ p { margin: 0 0 1rem; }
   width: 100%; height: calc(100% + 96px); border: 0;
   filter: invert(.92) hue-rotate(195deg) saturate(1.15) brightness(.7) contrast(1.05);
 }
-/* Screen blend pinkens the bright street lines while the dark base stays blue */
-.footer__streets {
-  position: absolute; inset: 0; z-index: 1; pointer-events: none; mix-blend-mode: screen;
-  background: linear-gradient(120deg, #2c2170 0%, #a3137f 60%, #e0119e 100%);
-}
-/* Darkening veil keeps the footer content readable over the map */
+/* Solid navy veil keeps the footer content readable over the dark-blue map */
 .footer__veil {
   position: absolute; inset: 0; z-index: 2; pointer-events: none;
-  background: linear-gradient(180deg, rgba(8,11,38,.62) 0%, rgba(8,11,38,.88) 100%);
+  background: rgba(8,11,38,.78);
 }
 .footer__inner, .footer__bottom { position: relative; z-index: 3; }
 .footer__inner { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,.08); }

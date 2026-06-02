@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevEdu · Cloud Development Environments for Education</title>
+  <meta name="description" content="DevEdu gives teachers pre-configured, browser-based coding environments so students can start writing code in seconds — nothing to install. Spend less time on course dependencies and more time teaching." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lobster&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div data-include="partials/nav.html"></div>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <span class="eyebrow">For computer science educators</span>
+        <h1>Cloud Development Environments <span class="grad-text">for Education</span></h1>
+        <p class="lede">Spend less time on course dependencies and more time teaching. DevEdu gives every student a ready-to-code workspace in the browser — nothing to install.</p>
+        <div class="hero__cta">
+          <a class="btn btn--grad btn--lg" href="https://app.devedu.io/">Get started free</a>
+          <a class="btn btn--ghost btn--lg" href="#how">See how it works</a>
+        </div>
+        <p class="hero__note">Free for teachers · <strong>$99 per student credit</strong> (140 container-days) · Runs in any browser</p>
+      </div>
+
+      <div class="hero__art" aria-hidden="true">
+        <div class="window">
+          <div class="window__bar"><span></span><span></span><span></span><em>editor-student-1.devedu.io</em></div>
+          <pre class="window__code"><code><span class="c-key">#include</span> <span class="c-str">&lt;stdio.h&gt;</span>
+
+<span class="c-key">int</span> <span class="c-fn">main</span>(<span class="c-key">void</span>) {
+    printf(<span class="c-str">"Hello, DevEdu!\n"</span>);
+    <span class="c-key">return</span> <span class="c-num">0</span>;
+}</code></pre>
+          <div class="window__run">▶ Run &nbsp;·&nbsp; <span class="ok">Hello, DevEdu!</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Intro: problem → solution ===== -->
+  <section class="section intro">
+    <div class="container">
+      <div class="intro__grid">
+        <div class="intro__cards">
+          <div class="vs vs--bad">
+            <span class="vs__tag">Without DevEdu</span>
+            <ul class="vs__list">
+              <li>30 laptops, 30 different setups</li>
+              <li>Wrong gcc / JDK / Python versions</li>
+              <li>Admin rights, PATH, missing libraries</li>
+              <li>Week one lost to installs, not code</li>
+            </ul>
+          </div>
+          <div class="vs vs--good">
+            <span class="vs__tag">With DevEdu</span>
+            <ul class="vs__list">
+              <li>One identical environment for everyone</li>
+              <li>Opens in the browser — nothing to install</li>
+              <li>Any OS, no admin rights needed</li>
+              <li>Students writing code in minute one</li>
+            </ul>
+          </div>
+        </div>
+        <div class="intro__copy">
+          <span class="eyebrow">Less IT, more teaching</span>
+          <h2>Stop being your students' tech support</h2>
+          <p>The first weeks of every course shouldn't disappear into debugging 30 different laptops, missing compilers, and "it works on my machine."</p>
+          <p>With DevEdu you configure the environment <strong>once</strong> — and every student opens the exact same working setup in their browser. We handle the installs, the OS quirks, and the broken configs. <strong>You teach; we keep it running.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Features ===== -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section__head center">
+        <span class="eyebrow">Why DevEdu</span>
+        <h2>Built for the classroom</h2>
+      </div>
+      <div class="grid grid--3">
+        <article class="card">
+          <div class="card__icon"><i class="fa-solid fa-headset"></i></div>
+          <h3>No more tech support</h3>
+          <p>Stop losing class time to laptop setup, missing compilers, and "it works on my machine." Every student gets the same working environment — we handle the installs, OS quirks, and broken configs.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon"><i class="fa-solid fa-globe"></i></div>
+          <h3>Works everywhere</h3>
+          <p>Browser-based on Windows, Mac, or Linux — no installs, no admin rights. If a student can open a web page, they can write code, in class or at home.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon"><i class="fa-solid fa-robot"></i></div>
+          <h3>AI assistant built in</h3>
+          <p>DevEdu Code, an AI pair-programmer, ships inside every environment to help students learn and unblock themselves.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+          <h3>Scalable</h3>
+          <p>No cap on the number of students per course. Add a whole class with a single enrollment link.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h3>Customizable</h3>
+          <p>Pre-built support for popular languages, or bring your own Docker image for exactly the stack your course needs.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+          <h3>Flexible</h3>
+          <p>Environments built with educators, hosted on your infrastructure or ours. Configure once, reuse every semester.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How it works ===== -->
+  <section class="section section--tint" id="how">
+    <div class="container">
+      <div class="section__head center">
+        <span class="eyebrow">Get going in minutes</span>
+        <h2>Three steps to a coding classroom</h2>
+      </div>
+      <div class="grid grid--3 steps">
+        <article class="step">
+          <div class="step__num">1</div>
+          <h3>Create a course</h3>
+          <p>Add your course details — name, section, and term. This is the home for your students and environments.</p>
+        </article>
+        <article class="step">
+          <div class="step__num">2</div>
+          <h3>Create an environment</h3>
+          <p>Pick a language image (or your own) and assign it to the course. Every student gets their own private copy.</p>
+        </article>
+        <article class="step">
+          <div class="step__num">3</div>
+          <h3>Enroll students</h3>
+          <p>Share an enrollment link. Students join, launch their container, and are coding in the browser seconds later.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Open source / free ===== -->
+  <section class="section" id="open">
+    <div class="container">
+      <div class="section__head center">
+        <span class="eyebrow">No lock-in · No barriers</span>
+        <h2>Your students' environments are open source — and free if you need them</h2>
+        <p class="muted big" style="max-width:62ch;margin:.5rem auto 0">Every coding environment we ship — the images your students actually work in — is open source under the MIT license, public on GitHub. We don't believe a student's budget should decide whether they can learn to code.</p>
+      </div>
+      <div class="grid grid--3">
+        <article class="card">
+          <div class="card__icon"><i class="fa-brands fa-github"></i></div>
+          <h3>Open-source environments</h3>
+          <p>Every language image we offer — C/C++, Python &amp; Django, Ruby on Rails — lives on GitHub under the MIT license. The environment your students code in is never a black box.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon"><i class="fa-solid fa-house-laptop"></i></div>
+          <h3>A free path for every student</h3>
+          <p>Not ready to pay for hosted compute? Run the identical open-source images on any machine with Docker — completely free. Same editor, same tooling, zero cost.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon"><i class="fa-solid fa-robot"></i></div>
+          <h3>AI that comes with the class</h3>
+          <p>Enrollment is the only ticket students need. The moment they join a class, <strong>DevEdu Code</strong> — our built-in AI pair-programmer — comes with them, whether or not they ever buy container time.</p>
+        </article>
+      </div>
+      <div class="center" style="margin-top:2.2rem">
+        <a class="btn btn--grad btn--lg" href="https://github.com/DevEdu-IO" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i>&nbsp; Explore the source on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section section--tint" id="faq">
+    <div class="container narrow">
+      <div class="section__head center">
+        <span class="eyebrow">Questions</span>
+        <h2>Frequently asked</h2>
+      </div>
+      <div class="faq">
+        <details class="faq__item">
+          <summary>What languages and frameworks are supported?</summary>
+          <p>Out of the box: <strong>C, C++, Java, Python &amp; Django, and Ruby &amp; Rails</strong>. Need something else? Bring a custom Docker image and we'll help you wire it up.</p>
+        </details>
+        <details class="faq__item">
+          <summary>What do students need on their computer?</summary>
+          <p>Just a modern web browser — we recommend <strong>Google Chrome</strong>. Everything runs in the cloud, so any Windows, Mac, or Linux machine works.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Is there a limit on the number of students?</summary>
+          <p>No. There's no cap on students per course — add an entire class with a single enrollment link.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Can I order in bulk for a department?</summary>
+          <p>Yes. We support bulk ordering and bookstore codes for departments and institutions. <a href="mailto:help@devedu.io">Get in touch</a> and we'll set you up.</p>
+        </details>
+        <details class="faq__item">
+          <summary>How much does it cost?</summary>
+          <p><strong>Free for teachers.</strong> Student container time is <strong>$99 per credit</strong>, which is good for 140 days of container time. Delete a container early and the unused days return to the student's balance.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Final CTA ===== -->
+  <section class="section cta-band">
+    <div class="container center">
+      <h2>Ready to teach without the setup?</h2>
+      <p class="muted big">Spin up your first course and have students coding in the browser today.</p>
+      <a class="btn btn--grad btn--lg" href="https://app.devedu.io/">Get started free</a>
+    </div>
+  </section>
+
+  <div data-include="partials/footer.html"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

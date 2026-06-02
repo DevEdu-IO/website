@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docs · DevEdu</title>
+  <meta name="description" content="How DevEdu containers and the DevEdu Code AI assistant work, plus our open-source container images you can run and extend yourself." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lobster&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div data-include="partials/nav.html"></div>
+
+  <!-- ===== Docs ===== -->
+  <div class="container docs">
+    <!-- Sidebar -->
+    <aside class="docs__nav">
+      <nav>
+        <p class="docs__navhead">Containers</p>
+        <a href="#what">What is a container?</a>
+        <a href="#launch">Launching one</a>
+        <a href="#signin">Signing in</a>
+        <a href="#urls">Editor &amp; app URLs</a>
+        <a href="#credits">Credits &amp; time</a>
+        <p class="docs__navhead">DevEdu Code</p>
+        <a href="#code-what">What it is</a>
+        <a href="#code-container">In your container</a>
+        <a href="#code-cli">On your own machine</a>
+        <a href="#code-cost">Auth &amp; cost</a>
+        <p class="docs__navhead">Open source</p>
+        <a href="#images">Container images</a>
+        <a href="#run">Run one yourself</a>
+        <a href="#extend">Build your own</a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="docs__main">
+      <header class="docs__head">
+        <span class="eyebrow">Documentation</span>
+        <h1>DevEdu docs</h1>
+        <p class="muted big">How containers and the DevEdu Code assistant work — and the open-source images you can run and extend yourself.</p>
+      </header>
+
+      <!-- ===================== Containers ===================== -->
+      <section id="what" class="docs__sec">
+        <h2>What is a container?</h2>
+        <p>A <strong>container</strong> is your own private development environment that runs in the cloud and opens right in your web browser — like a fresh computer set up just for your course. It already has the editor (VS Code), language tools, and a terminal you need, so there's nothing to download or configure. Each student gets their own; your work is private and saved between sessions.</p>
+      </section>
+
+      <section id="launch" class="docs__sec">
+        <h2>Launching one</h2>
+        <ol>
+          <li>Open your <strong>Course</strong>, then an <strong>Environment</strong> inside it.</li>
+          <li>Click <strong>New container</strong>, give it a name and a password, and <strong>Start</strong> it.</li>
+          <li>Open the <strong>Editor</strong> link to write and run code.</li>
+        </ol>
+      </section>
+
+      <section id="signin" class="docs__sec">
+        <h2>Signing in</h2>
+        <p>When you open a container you'll be asked to sign in. Log in with <strong>your email address</strong> as the username and the <strong>password you set</strong> for that container.</p>
+        <div class="note"><strong>Use Google Chrome.</strong> The browser editor works best in Chrome; other browsers may not behave correctly.</div>
+      </section>
+
+      <section id="urls" class="docs__sec">
+        <h2>Editor &amp; app URLs</h2>
+        <p>Every container gives you two web addresses:</p>
+        <ul>
+          <li><strong>Editor</strong> — <code>editor-&lt;name&gt;-&lt;env&gt;.devedu.io</code>, where you write and run code.</li>
+          <li><strong>App</strong> — <code>app-&lt;name&gt;-&lt;env&gt;.devedu.io</code>, where your running program shows up (it listens on port <code>3000</code>).</li>
+        </ul>
+      </section>
+
+      <section id="credits" class="docs__sec">
+        <h2>Credits &amp; time</h2>
+        <p>DevEdu is <strong>free for teachers</strong>. Running a container uses <strong>container-days</strong> from a student's balance: a credit is <strong>$99 for 140 days</strong> of container time. Idle containers sleep automatically, and deleting a container before it expires returns the unused days to the student's balance.</p>
+      </section>
+
+      <!-- ===================== DevEdu Code ===================== -->
+      <section id="code-what" class="docs__sec">
+        <h2>DevEdu Code <span class="pill">AI assistant</span></h2>
+        <p><strong>DevEdu Code</strong> is an AI pair-programmer built into every container (and available as a command-line tool). Ask it to explain an error, walk through a concept, write a function, or refactor your code. It can read the files in your workspace, make edits, and run commands — but it always asks for your approval before changing anything or running something.</p>
+      </section>
+
+      <section id="code-container" class="docs__sec">
+        <h2>In your container</h2>
+        <ol>
+          <li>Click the <code>&lt;/&gt;</code> <strong>DevEdu Code</strong> icon in the left activity bar.</li>
+          <li>Type a question or request — e.g. <em>"why am I getting a segfault?"</em></li>
+          <li>When it wants to <strong>write a file</strong> or <strong>run a command</strong>, you get an <strong>Apply</strong> / <strong>Run</strong> button — nothing happens until you approve it.</li>
+        </ol>
+      </section>
+
+      <section id="code-cli" class="docs__sec">
+        <h2>On your own machine</h2>
+        <p>The same assistant is a command-line tool. On macOS or Linux, install it with one line:</p>
+        <pre class="code"><code>curl -fsSL https://raw.githubusercontent.com/DevEdu-IO/code/main/install.sh | sh</code></pre>
+        <p>On Windows, download <code>devedu-windows-amd64.exe</code> from the <a href="https://github.com/DevEdu-IO/code/releases" target="_blank" rel="noopener">releases page</a>. Then run <code>devedu</code> for an interactive session, or <code>devedu "your question"</code> for a one-off. It's open source: <a href="https://github.com/DevEdu-IO/code" target="_blank" rel="noopener">github.com/DevEdu-IO/code</a>.</p>
+      </section>
+
+      <section id="code-cost" class="docs__sec">
+        <h2>Auth &amp; cost</h2>
+        <p>In a DevEdu container the assistant is already signed in to your account. On your own machine it asks for your <strong>API key</strong> once (Account → API key) and stores it securely. Usage draws from your account's token balance; every student gets a chunk free on enrolling in a course, with top-ups available.</p>
+      </section>
+
+      <!-- ===================== Open source ===================== -->
+      <section id="images" class="docs__sec">
+        <h2>Open-source container images</h2>
+        <p>Our base environments are <strong>open source under the MIT license</strong> — published on GitHub and Docker Hub. Run them on your own machine, build them yourself, or extend them for your course. Each is browser-based VS Code (code-server) with the language toolchain and the DevEdu Code assistant pre-installed.</p>
+        <div class="grid grid--3">
+          <article class="card">
+            <h3>C / C++</h3>
+            <p class="muted">gcc, g++, gdb, Run/Debug buttons, and DevEdu Code.</p>
+            <p><code>deveduio/cpp</code></p>
+            <a class="docs__repo" href="https://github.com/DevEdu-IO/docker-c" target="_blank" rel="noopener">DevEdu-IO/docker-c →</a>
+          </article>
+          <article class="card">
+            <h3>Python &amp; Django</h3>
+            <p class="muted">Python 3, Django, and DevEdu Code.</p>
+            <p><code>deveduio/django</code></p>
+            <a class="docs__repo" href="https://github.com/DevEdu-IO/docker-django" target="_blank" rel="noopener">DevEdu-IO/docker-django →</a>
+          </article>
+          <article class="card">
+            <h3>Ruby on Rails</h3>
+            <p class="muted">Ruby, Rails, and DevEdu Code.</p>
+            <p><code>see repo for image</code></p>
+            <a class="docs__repo" href="https://github.com/DevEdu-IO/docker-ror" target="_blank" rel="noopener">DevEdu-IO/docker-ror →</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="run" class="docs__sec">
+        <h2>Run one yourself</h2>
+        <p>You only need Docker. Pull an image and start it — then open the editor in your browser:</p>
+        <pre class="code"><code>docker pull deveduio/cpp:latest
+docker run -d --name devedu-cpp -p 8080:80 deveduio/cpp:latest
+# now open http://localhost:8080</code></pre>
+        <p>The Django image also serves your app on port 3000:</p>
+        <pre class="code"><code>docker run -d -p 8080:80 -p 3000:3000 deveduio/django:latest</code></pre>
+        <p>Images are multi-arch, so they run on Intel/AMD (<code>amd64</code>) and Apple Silicon / ARM (<code>arm64</code>).</p>
+      </section>
+
+      <section id="extend" class="docs__sec">
+        <h2>Build your own</h2>
+        <p>Need a different stack? Clone a repo, edit the <code>Dockerfile</code>, and build — or start from scratch with code-server and add the DevEdu Code <code>.vsix</code>. Teachers can host custom images on their own infrastructure or on DevEdu's.</p>
+        <pre class="code"><code>git clone https://github.com/DevEdu-IO/docker-django.git
+cd docker-django
+# edit Dockerfile.amd64 / Dockerfile.arm64, then:
+./build.sh --load     # build for your machine</code></pre>
+        <p>Questions or want a custom environment built with you? <a href="mailto:help@devedu.io">help@devedu.io</a>.</p>
+      </section>
+    </main>
+  </div>
+
+  <div data-include="partials/footer.html"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

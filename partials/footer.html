@@ -1,20 +1,23 @@
 <footer class="footer">
+  <div class="footer__mapbg" aria-hidden="true">
+    <iframe src="https://maps.google.com/maps?q=Colorado+Springs,+CO&z=12&output=embed" title="DevEdu — Colorado Springs, Colorado" tabindex="-1" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <div class="footer__streets" aria-hidden="true"></div>
+  <div class="footer__veil" aria-hidden="true"></div>
   <div class="container footer__inner">
     <div class="footer__brand">
       <a class="brand brand--light" href="index.html"><span class="brand__dev">Dev</span><span class="brand__edu">Edu</span></a>
       <p>Code without barriers.</p>
+      <address class="footer__contact">
+        <span><i class="fa-solid fa-location-dot"></i><span>7222 Commerce Center Dr, Suite 220<br>Colorado Springs, CO 80919</span></span>
+        <span><i class="fa-solid fa-envelope"></i><span>Say hi <span aria-hidden="true">👋</span> <a href="mailto:hello@devedu.io">hello@devedu.io</a></span></span>
+      </address>
+      <a class="footer__dir" href="https://www.google.com/maps/dir/?api=1&amp;destination=7222+Commerce+Center+Dr+Suite+220,+Colorado+Springs,+CO+80919" target="_blank" rel="noopener">Get directions <i class="fa-solid fa-arrow-right"></i></a>
     </div>
-    <form class="footer__news" onsubmit="return false;">
-      <label for="news-email">Stay in the loop</label>
-      <div class="footer__newsrow">
-        <input id="news-email" type="email" placeholder="you@school.edu" autocomplete="email" />
-        <button class="btn btn--grad" type="submit">Subscribe</button>
-      </div>
-      <small>We'll only email occasional product updates. No spam.</small>
-    </form>
     <nav class="footer__links">
       <a href="docs.html">Docs</a>
       <a href="https://app.devedu.io/">Sign in</a>
+      <a href="https://discord.gg/yZvQrYPjJJ" target="_blank" rel="noopener">Support on Discord</a>
       <a href="https://github.com/DevEdu-IO" target="_blank" rel="noopener">GitHub</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
@@ -23,9 +26,8 @@
   <div class="container footer__bottom">
     <span>&copy; <span id="year"></span> DevEdu. All rights reserved.</span>
     <div class="footer__social">
+      <a href="https://discord.gg/yZvQrYPjJJ" target="_blank" rel="noopener" aria-label="Discord support"><i class="fa-brands fa-discord"></i></a>
       <a href="https://github.com/DevEdu-IO" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-      <a href="#" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
     </div>
   </div>
 </footer>

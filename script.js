@@ -93,4 +93,74 @@
       .then(function (html) { el.outerHTML = html; })
       .catch(function (err) { console.error(err); });
   })).then(enhance);
+
+  // --- Donated-AI impact stats ---------------------------------------------
+  // Fetches the webapp's public /api/v1/impact endpoint and counts the numbers
+  // up when the band scrolls into view. The section stays hidden if the API is
+  // unreachable, so the page never shows empty placeholders.
+  function compact(n) {
+    if (n >= 1e9) return (n / 1e9).toFixed(1).replace(/\.0$/, "") + "B";
+    if (n >= 1e6) return (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M";
+    if (n >= 1e3) return (n / 1e3).toFixed(1).replace(/\.0$/, "") + "K";
+    return String(n);
+  }
+  function withCommas(n) { return n.toLocaleString("en-US"); }
+
+  function reducedMotion() {
+    return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function countUp(el, target, fmt, suffix) {
+    suffix = suffix || "";
+    if (reducedMotion()) { el.textContent = fmt(target) + suffix; return; }
+    var dur = 1800, started = null;
+    el.textContent = fmt(0) + suffix; // make the climb obvious from zero
+    function frame(ts) {
+      if (started === null) started = ts;
+      var p = Math.min((ts - started) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+      el.textContent = fmt(Math.round(target * eased)) + suffix;
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function initImpact() {
+    var wrap = document.querySelector("[data-impact-endpoint]");
+    if (!wrap) return;
+    var section = wrap.closest("section") || wrap;
+    var specs = [
+      { key: "hours_donated",   fmt: withCommas, suffix: "+" },
+      { key: "tokens_donated",  fmt: compact,    suffix: ""  },
+      { key: "students_helped", fmt: withCommas, suffix: "+" }
+    ];
+
+    // Use the local Rails server when previewing the site on localhost.
+    var endpoint = wrap.getAttribute("data-impact-endpoint");
+    var localEndpoint = wrap.getAttribute("data-impact-endpoint-local");
+    if (localEndpoint && (location.hostname === "localhost" || location.hostname === "127.0.0.1")) {
+      endpoint = localEndpoint;
+    }
+
+    fetch(endpoint)
+      .then(function (r) { if (!r.ok) throw new Error("impact " + r.status); return r.json(); })
+      .then(function (data) {
+        section.hidden = false; // reveal only once we have real numbers
+        var animate = function () {
+          specs.forEach(function (s) {
+            var el = wrap.querySelector('[data-stat="' + s.key + '"]');
+            if (el && typeof data[s.key] === "number") countUp(el, data[s.key], s.fmt, s.suffix);
+          });
+        };
+        var io = new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { animate(); obs.disconnect(); }
+          });
+        }, { threshold: 0.3 });
+        io.observe(section);
+      })
+      .catch(function (err) { console.error(err); }); // leave the band hidden
+  }
+
+  initImpact();
 })();

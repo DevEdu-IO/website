@@ -121,22 +121,37 @@ p { margin: 0 0 1rem; }
 .hero__cta { display: flex; gap: .8rem; flex-wrap: wrap; margin: 1.4rem 0 .8rem; }
 .hero__note { color: var(--muted); font-size: .9rem; }
 
-/* Hero editor mockup */
+/* Hero mockup — Linux terminal / editor window */
 .window {
-  background: #1a1530; color: #ece7ff; border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg); overflow: hidden; border: 0;
+  background: #11131c; color: #d7dcec; border-radius: 12px;
+  box-shadow: var(--shadow-lg); overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
   transform: rotate(1.2deg);
 }
-.window__bar { display: flex; align-items: center; gap: 7px; padding: .7rem 1rem; background: #15102a; border-bottom: 1px solid rgba(255,255,255,.06); }
-.window__bar span { width: 11px; height: 11px; border-radius: 50%; background: #4a4368; }
-.window__bar span:nth-child(1) { background: #ff5f57; }
-.window__bar span:nth-child(2) { background: #febc2e; }
-.window__bar span:nth-child(3) { background: #28c840; }
-.window__bar em { margin-left: auto; font-style: normal; font-size: .75rem; color: #8a83b0; font-family: var(--mono); }
-.window__code { margin: 0; padding: 1.2rem 1.3rem; font-family: var(--mono); font-size: .95rem; line-height: 1.7; overflow-x: auto; }
-.window__code .c-key { color: #c4b5ff; } .window__code .c-str { color: #7ee787; } .window__code .c-fn { color: #79c0ff; } .window__code .c-num { color: #ffa657; }
-.window__run { padding: .7rem 1.3rem 1rem; font-family: var(--mono); font-size: .85rem; color: #b6aee0; border-top: 1px solid rgba(255,255,255,.06); }
-.window__run .ok { color: #7ee787; }
+/* thin terminal-accent strip across the very top */
+.window::before { content: ""; display: block; height: 2px; background: linear-gradient(90deg, #3ddc84, #56b6c2, #61afef, #c678dd); }
+.window__bar { display: flex; align-items: center; gap: .55rem; padding: .55rem .8rem; background: #0c0e15; border-bottom: 1px solid rgba(255,255,255,.06); font-family: var(--mono); }
+.window__tab { display: inline-flex; align-items: center; gap: .45rem; font-size: .78rem; color: #e6e9f2; background: rgba(255,255,255,.05); padding: .28rem .65rem; border-radius: 7px 7px 0 0; border-bottom: 2px solid #3ddc84; }
+.window__tab i { color: #f7c948; }
+.window__host { margin-left: auto; font-size: .73rem; color: #6b7186; letter-spacing: .01em; }
+.window__ctrls { display: inline-flex; gap: .4rem; }
+.window__ctrls b {
+  width: 19px; height: 19px; border-radius: 5px; background: rgba(255,255,255,.06);
+  display: inline-flex; align-items: center; justify-content: center; color: #9aa0b4; font-size: .68rem; line-height: 1;
+}
+.window__ctrls .min::before { content: "\2013"; }   /* – */
+.window__ctrls .max::before { content: "\25A1"; }   /* □ */
+.window__ctrls .cls::before { content: "\2715"; }   /* ✕ */
+.window__ctrls .cls { background: rgba(255,107,107,.16); color: #ff8585; }
+.window__code { margin: 0; padding: 1.1rem 1.3rem; font-family: var(--mono); font-size: .92rem; line-height: 1.75; overflow-x: auto; }
+.window__code .c-key { color: #c678dd; } .window__code .c-str { color: #98c379; } .window__code .c-fn { color: #61afef; } .window__code .c-num { color: #e5c07b; }
+.window__term { padding: .85rem 1.3rem 1.05rem; font-family: var(--mono); font-size: .84rem; background: #0c0e15; border-top: 1px solid rgba(255,255,255,.06); }
+.window__cmd { color: #d7dcec; }
+.window__cmd .u { color: #3ddc84; } .window__cmd .p { color: #61afef; }
+.window__out { margin-top: .3rem; color: #8b91a7; }
+.window__out .ok { color: #3ddc84; }
+.cursor { display: inline-block; width: 8px; height: 1.05em; background: #3ddc84; margin-left: .35rem; vertical-align: text-bottom; animation: blink 1.1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
 
 /* ===== Sections ===== */
 .section { padding: clamp(3rem, 6vw, 5rem) 0; }
@@ -212,20 +227,44 @@ p { margin: 0 0 1rem; }
 .cta-band .btn--grad:hover { box-shadow: 0 16px 36px rgba(0,0,0,.24); }
 
 /* ===== Footer ===== */
-.footer { background: #15121f; color: #cfc8e6; padding: 3rem 0 1.5rem; }
-.footer__inner { display: grid; grid-template-columns: 1.2fr 1.4fr 1fr; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,.08); }
-.footer__brand p { color: #8d86ab; margin-top: .4rem; }
-.footer__news label { display: block; font-weight: 600; color: #fff; margin-bottom: .6rem; }
-.footer__newsrow { display: flex; gap: .5rem; }
-.footer__newsrow input {
-  flex: 1; min-width: 0; padding: .65rem .9rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.06); color: #fff; font-family: inherit;
+.footer { position: relative; overflow: hidden; isolation: isolate; background: #0a0e2a; color: #cfc8e6; padding: 3.5rem 0 1.75rem; }
+/* Full-bleed Colorado Springs map, recolored to the brand palette */
+.footer__mapbg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.footer__mapbg iframe {
+  position: absolute; left: 0; top: -96px; /* crop Google's top-left place card */
+  width: 100%; height: calc(100% + 96px); border: 0;
+  filter: invert(.92) hue-rotate(195deg) saturate(1.15) brightness(.7) contrast(1.05);
 }
-.footer__newsrow input::placeholder { color: #8d86ab; }
-.footer__news small { display: block; margin-top: .5rem; color: #8d86ab; }
-.footer__links { display: flex; flex-direction: column; gap: .6rem; }
-.footer__links a { color: #cfc8e6; }
-.footer__links a:hover { color: #fff; }
+/* Screen blend pinkens the bright street lines while the dark base stays blue */
+.footer__streets {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; mix-blend-mode: screen;
+  background: linear-gradient(120deg, #2c2170 0%, #a3137f 60%, #e0119e 100%);
+}
+/* Darkening veil keeps the footer content readable over the map */
+.footer__veil {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(180deg, rgba(8,11,38,.62) 0%, rgba(8,11,38,.88) 100%);
+}
+.footer__inner, .footer__bottom { position: relative; z-index: 3; }
+.footer__inner { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,.08); }
+.footer__brand p { color: #8d86ab; margin-top: .4rem; }
+/* Footer contact, under the brand */
+.footer__contact { font-style: normal; display: flex; flex-direction: column; gap: .55rem; margin-top: 1.2rem; }
+.footer__contact > span { display: flex; gap: .65rem; color: #cfc8e6; font-size: .9rem; line-height: 1.45; }
+.footer__contact i { color: var(--pink); margin-top: .2rem; width: 1rem; text-align: center; flex: none; }
+.footer__contact a { color: #cfc8e6; }
+.footer__contact a:hover { color: #fff; }
+.footer__dir { display: inline-flex; align-items: center; gap: .45rem; margin-top: .95rem; font-weight: 700; font-size: .88rem; color: #fff; }
+.footer__dir i { transition: transform .2s ease; }
+.footer__dir:hover i { transform: translateX(3px); }
+.footer__links { display: flex; flex-direction: column; gap: .75rem; align-items: flex-start; text-align: left; justify-self: end; }
+.footer__links a {
+  color: #cfc8e6; font-weight: 500; font-size: .95rem; line-height: 1.2; padding-bottom: 3px;
+  background-image: var(--grad);
+  background-size: 0% 2px; background-position: 0% 100%; background-repeat: no-repeat;
+  transition: color .25s ease, background-size .35s cubic-bezier(.4,0,.2,1);
+}
+.footer__links a:hover { color: #fff; background-size: 100% 2px; }
 .footer__bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; font-size: .85rem; color: #8d86ab; flex-wrap: wrap; gap: .5rem; }
 .footer__social { display: flex; gap: 1rem; }
 .footer__social a { color: #8d86ab; }
@@ -238,6 +277,7 @@ p { margin: 0 0 1rem; }
   .grid--3 { grid-template-columns: repeat(2, 1fr); }
   .intro__grid { grid-template-columns: 1fr; gap: 2rem; }
   .footer__inner { grid-template-columns: 1fr; }
+  .footer__links { justify-self: start; }
 }
 @media (max-width: 720px) {
   .nav__toggle { display: flex; }
@@ -309,3 +349,43 @@ p { margin: 0 0 1rem; }
 .legal li { margin: .35rem 0; }
 .legal a { color: var(--violet-600); }
 .legal__note { background: var(--bg-tint); border: 1px solid var(--line); border-left: 3px solid var(--violet); border-radius: var(--radius); padding: 1rem 1.2rem; margin: 1.4rem 0; font-size: .95rem; }
+
+/* ===== Impact / donated-AI stats band ===== */
+/* Deliberately dark so it stands apart from the light/tinted sections around it. */
+.impact-band {
+  background: radial-gradient(120% 140% at 50% 0%, #241a44 0%, #14102a 65%);
+  color: #ece7ff;
+}
+.impact-band .eyebrow { color: #cbbdff; }
+.impact-band h2 { color: #fff; }
+.impact-band .muted { color: #b6aee0; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.6rem; }
+.stat { text-align: center; padding: 1.4rem 1rem; }
+.stat__num {
+  font-family: var(--mono); font-weight: 800; line-height: 1;
+  font-size: clamp(2.6rem, 6.4vw, 3.8rem);
+  background: linear-gradient(120deg, #a98cff 0%, #d873f5 50%, #ff62c4 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 38px rgba(216, 115, 245, .25);
+}
+.stat__label { margin-top: .7rem; color: #b9b1de; font-weight: 600; font-size: .98rem; }
+@media (max-width: 720px) { .stats { grid-template-columns: 1fr; gap: .5rem; } }
+
+/* How DevEdu Code teaches — principle cards inside the dark band */
+.ai-principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; max-width: 1040px; margin: 2.8rem auto 0; }
+.ai-principle {
+  text-align: left; padding: 1.7rem 1.5rem;
+  background: rgba(255, 255, 255, .045);
+  border: 1px solid rgba(255, 255, 255, .10);
+  border-radius: var(--radius);
+}
+.ai-principle i {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 46px; height: 46px; border-radius: 12px; margin-bottom: 1rem;
+  background: rgba(247, 6, 176, .15); color: #ff7ad0; font-size: 1.2rem;
+}
+.ai-principle h3 { color: #fff; font-size: 1.08rem; margin: 0 0 .45rem; }
+.ai-principle p { color: #b6aee0; font-size: .93rem; line-height: 1.6; margin: 0; }
+.impact-stats__eyebrow { display: block; text-align: center; margin-top: 3.2rem; color: #cbbdff; }
+@media (max-width: 760px) { .ai-principles { grid-template-columns: 1fr; gap: 1rem; } }

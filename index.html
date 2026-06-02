@@ -22,7 +22,7 @@
         <h1>Cloud Development Environments <span class="grad-text">for Education</span></h1>
         <p class="lede">Spend less time on course dependencies and more time teaching. DevEdu gives every student a ready-to-code workspace in the browser — nothing to install.</p>
         <div class="hero__cta">
-          <a class="btn btn--grad btn--lg" href="https://app.devedu.io/">Get started free</a>
+          <a class="btn btn--grad btn--lg" href="https://app.devedu.io/get-started">Get started free</a>
           <a class="btn btn--ghost btn--lg" href="#how">See how it works</a>
         </div>
         <p class="hero__note">Free for teachers · <strong>$99 per student credit</strong> (140 container-days) · Runs in any browser</p>
@@ -30,14 +30,61 @@
 
       <div class="hero__art" aria-hidden="true">
         <div class="window">
-          <div class="window__bar"><span></span><span></span><span></span><em>editor-student-1.devedu.io</em></div>
+          <div class="window__bar"><span class="window__tab"><i class="fa-brands fa-linux"></i> hello.c</span><span class="window__host">student@devedu: ~/hello</span><span class="window__ctrls"><b class="min"></b><b class="max"></b><b class="cls"></b></span></div>
           <pre class="window__code"><code><span class="c-key">#include</span> <span class="c-str">&lt;stdio.h&gt;</span>
 
 <span class="c-key">int</span> <span class="c-fn">main</span>(<span class="c-key">void</span>) {
     printf(<span class="c-str">"Hello, DevEdu!\n"</span>);
     <span class="c-key">return</span> <span class="c-num">0</span>;
 }</code></pre>
-          <div class="window__run">▶ Run &nbsp;·&nbsp; <span class="ok">Hello, DevEdu!</span></div>
+          <div class="window__term"><div class="window__cmd"><span class="u">student@devedu</span>:<span class="p">~/hello</span>$ gcc hello.c -o hello &amp;&amp; ./hello</div><div class="window__out"><span class="ok">Hello, DevEdu!</span><span class="cursor"></span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Impact ===== -->
+  <section class="section impact-band" id="impact" hidden>
+    <div class="container">
+      <div class="section__head center">
+        <span class="eyebrow">Free to get started</span>
+        <h2>Every student starts coding with AI — on us</h2>
+        <p class="muted big" style="max-width:62ch;margin:.5rem auto 0">Join a DevEdu class and our AI pair-programmer, DevEdu Code, comes with a free starter balance — no card required. Need more later? Students can top up anytime.</p>
+      </div>
+
+      <div class="ai-principles">
+        <div class="ai-principle">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h3>Built to teach, not to cheat</h3>
+          <p>DevEdu Code coaches with hints, explanations, and scaffolds — and deliberately won't hand over finished assignments or the core logic. Students still do the thinking.</p>
+        </div>
+        <div class="ai-principle">
+          <i class="fa-solid fa-code"></i>
+          <h3>Right inside their project</h3>
+          <p>It reads, runs, and reviews the code in a student's own workspace, so every hint is grounded in what they're actually building — not generic boilerplate.</p>
+        </div>
+        <div class="ai-principle">
+          <i class="fa-solid fa-shield-halved"></i>
+          <h3>Private and on topic</h3>
+          <p>Each student's work stays their own — never shared between classmates — and the assistant keeps the focus on computer science and real learning.</p>
+        </div>
+      </div>
+
+      <span class="eyebrow impact-stats__eyebrow">The impact so far</span>
+      <div class="stats"
+           data-impact-endpoint="https://app.devedu.io/api/v1/impact"
+           data-impact-endpoint-local="http://127.0.0.1:3001/api/v1/impact">
+        <div class="stat">
+          <div class="stat__num" data-stat="hours_donated">—</div>
+          <div class="stat__label">Hours of AI help given</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num" data-stat="tokens_donated">—</div>
+          <div class="stat__label">AI tokens donated</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num" data-stat="students_helped">—</div>
+          <div class="stat__label">Students supported</div>
         </div>
       </div>
     </div>
@@ -68,10 +115,10 @@
           </div>
         </div>
         <div class="intro__copy">
-          <span class="eyebrow">Less IT, more teaching</span>
-          <h2>Stop being your students' tech support</h2>
-          <p>The first weeks of every course shouldn't disappear into debugging 30 different laptops, missing compilers, and "it works on my machine."</p>
-          <p>With DevEdu you configure the environment <strong>once</strong> — and every student opens the exact same working setup in their browser. We handle the installs, the OS quirks, and the broken configs. <strong>You teach; we keep it running.</strong></p>
+          <span class="eyebrow">Less setup, more teaching</span>
+          <h2>Class should start with code, not configuration</h2>
+          <p>The first weeks of a course shouldn't disappear into mismatched compilers, missing dependencies, and the all-too-familiar "it works on my machine."</p>
+          <p>DevEdu gives every student the same ready-to-code environment in their browser — set up <strong>once</strong>, identical for everyone. We handle the installs, the OS quirks, and the broken configs, so you can spend day one <strong>teaching, not troubleshooting.</strong></p>
         </div>
       </div>
     </div>
@@ -214,7 +261,7 @@
     <div class="container center">
       <h2>Ready to teach without the setup?</h2>
       <p class="muted big">Spin up your first course and have students coding in the browser today.</p>
-      <a class="btn btn--grad btn--lg" href="https://app.devedu.io/">Get started free</a>
+      <a class="btn btn--grad btn--lg" href="https://app.devedu.io/get-started">Get started free</a>
     </div>
   </section>
 

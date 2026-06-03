@@ -125,20 +125,14 @@
     requestAnimationFrame(frame);
   }
 
-  // Keep the impact band hidden until we've helped more than this many students,
-  // so it doesn't show off tiny early numbers.
-  var MIN_STUDENTS_TO_SHOW = 30;
+  // Pick the number formatter for a stat element from its data-format attribute.
+  function formatterFor(el) {
+    return el.getAttribute("data-format") === "compact" ? compact : withCommas;
+  }
 
   function initImpact() {
     var wrap = document.querySelector("[data-impact-endpoint]");
     if (!wrap) return;
-    // Only the stats block hides/reveals — the "AI on us" copy above stays visible.
-    var section = wrap.closest(".impact-stats") || wrap.closest("section") || wrap;
-    var specs = [
-      { key: "hours_donated",   fmt: withCommas, suffix: "+" },
-      { key: "tokens_donated",  fmt: compact,    suffix: ""  },
-      { key: "students_helped", fmt: withCommas, suffix: "+" }
-    ];
 
     // Use the local Rails server when previewing the site on localhost.
     var endpoint = wrap.getAttribute("data-impact-endpoint");
@@ -150,25 +144,28 @@
     fetch(endpoint)
       .then(function (r) { if (!r.ok) throw new Error("impact " + r.status); return r.json(); })
       .then(function (data) {
-        // Stay hidden until we've helped more than MIN_STUDENTS_TO_SHOW students.
-        if (typeof data.students_helped !== "number" || data.students_helped <= MIN_STUDENTS_TO_SHOW) {
-          return;
-        }
-        section.hidden = false; // reveal once we have real, meaningful numbers
-        var animate = function () {
-          specs.forEach(function (s) {
-            var el = wrap.querySelector('[data-stat="' + s.key + '"]');
-            if (el && typeof data[s.key] === "number") countUp(el, data[s.key], s.fmt, s.suffix);
-          });
-        };
-        var io = new IntersectionObserver(function (entries, obs) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) { animate(); obs.disconnect(); }
-          });
-        }, { threshold: 0.3 });
-        io.observe(section);
+        // Reveal every impact block (it stays hidden only if the API is
+        // unreachable, so the page never shows empty placeholders) and count its
+        // stats up when it scrolls into view. Each [data-stat] reads its value
+        // (and format/suffix) from the single API response.
+        document.querySelectorAll("[data-impact-gate]").forEach(function (block) {
+          block.hidden = false;
+          var io = new IntersectionObserver(function (entries, obs) {
+            entries.forEach(function (e) {
+              if (!e.isIntersecting) return;
+              block.querySelectorAll("[data-stat]").forEach(function (el) {
+                var key = el.getAttribute("data-stat");
+                if (typeof data[key] === "number") {
+                  countUp(el, data[key], formatterFor(el), el.getAttribute("data-suffix") || "");
+                }
+              });
+              obs.disconnect();
+            });
+          }, { threshold: 0.25 });
+          io.observe(block);
+        });
       })
-      .catch(function (err) { console.error(err); }); // leave the band hidden
+      .catch(function (err) { console.error(err); }); // leave the blocks hidden
   }
 
   initImpact();

@@ -25,7 +25,7 @@
           <a class="btn btn--grad btn--lg" href="https://app.devedu.io/get-started">Get started free</a>
           <a class="btn btn--ghost btn--lg" href="#how">See how it works</a>
         </div>
-        <p class="hero__note">Free for teachers · <strong>$99 per student credit</strong> (140 container-days)</p>
+        <p class="hero__note">Free for teachers · <strong>$99 per student credit</strong></p>
       </div>
 
       <div class="hero__art" aria-hidden="true">
@@ -70,22 +70,26 @@
         </div>
       </div>
 
-      <div class="impact-stats" hidden>
+      <div class="impact-stats" data-impact-gate hidden>
         <span class="eyebrow impact-stats__eyebrow">The impact so far</span>
         <div class="stats"
              data-impact-endpoint="https://app.devedu.io/api/v1/impact"
              data-impact-endpoint-local="http://127.0.0.1:3001/api/v1/impact">
           <div class="stat">
-            <div class="stat__num" data-stat="hours_donated">—</div>
+            <div class="stat__num" data-stat="students_helped" data-suffix="+">—</div>
+            <div class="stat__label">Students supported</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num" data-stat="container_hours" data-suffix="+">—</div>
+            <div class="stat__label">Container hours served</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num" data-stat="hours_donated" data-suffix="+">—</div>
             <div class="stat__label">Hours of AI help given</div>
           </div>
           <div class="stat">
-            <div class="stat__num" data-stat="tokens_donated">—</div>
+            <div class="stat__num" data-stat="tokens_donated" data-format="compact">—</div>
             <div class="stat__label">AI tokens donated</div>
-          </div>
-          <div class="stat">
-            <div class="stat__num" data-stat="students_helped">—</div>
-            <div class="stat__label">Students supported</div>
           </div>
         </div>
       </div>

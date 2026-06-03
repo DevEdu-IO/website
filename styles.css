@@ -354,7 +354,7 @@ p { margin: 0 0 1rem; }
 .impact-band .eyebrow { color: #cbbdff; }
 .impact-band h2 { color: #fff; }
 .impact-band .muted { color: #b6aee0; }
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.6rem; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; margin-top: 2.6rem; }
 .stat { text-align: center; padding: 1.4rem 1rem; }
 .stat__num {
   font-family: var(--mono); font-weight: 800; line-height: 1;
@@ -384,3 +384,4 @@ p { margin: 0 0 1rem; }
 .ai-principle p { color: #b6aee0; font-size: .93rem; line-height: 1.6; margin: 0; }
 .impact-stats__eyebrow { display: block; text-align: center; margin-top: 3.2rem; color: #cbbdff; }
 @media (max-width: 760px) { .ai-principles { grid-template-columns: 1fr; gap: 1rem; } }
+
